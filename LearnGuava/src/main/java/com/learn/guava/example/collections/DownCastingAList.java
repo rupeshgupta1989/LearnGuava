@@ -1,4 +1,4 @@
-package com.learn.guava.collections.example;
+package com.learn.guava.example.collections;
 
 import java.util.List;
 
@@ -40,6 +40,15 @@ public class DownCastingAList {
 		final List<Integer> selectedList = Lists.transform(originalList, new CastFunction<Number, Integer>());
 
 		System.out.println(selectedList);
+		
+		/**
+		 *  Without using Guava -
+		 *  
+		 *  We can do the same without using Guava. But it involves 2 cast operations as shown below:
+		 */
+		List<Number> numberList = Lists.newArrayList();
+		List<Integer> integerList = (List<Integer>) (List<? extends Number>) numberList;
+		System.out.println(integerList);
 	}
 
 }
