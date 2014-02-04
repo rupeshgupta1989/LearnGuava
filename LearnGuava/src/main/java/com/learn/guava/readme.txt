@@ -1,1 +1,0 @@
-This project demonstrate the examples of Google Guava Collections, Functional, Ordering API

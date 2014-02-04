@@ -1,6 +1,8 @@
 package com.learn.guava.example.strings;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.common.base.Joiner;
 
@@ -57,5 +59,42 @@ public class JoinerExample {
 		 * 
 		 */
 		
+		/**
+		 * Below is the comparison of using Joiner's join and joining typical java api style:
+		 * 
+		 */
+		List<String> stringList = new ArrayList<String>();
+		stringList.add("One");
+		stringList.add("Two");
+		stringList.add("Three");
+		stringList.add("Four");
+		stringList.add("Five");
+
+		System.out.println("String Joined typical style: " + buildString(stringList, ","));
+
+		System.out.println("String Joined using Joiner class: " + Joiner.on(",").skipNulls().join(stringList));
 	}
+
+	/**
+	 *  Typical Style
+	 *  
+	 * @param stringList
+	 * @param delimiter
+	 * @return
+	 */
+	public static String buildString(List<String> stringList, String delimiter) {
+
+		StringBuilder builder = new StringBuilder();
+
+		for (String s : stringList) {
+			if (s != null) {
+				builder.append(s).append(delimiter);
+			}
+		}
+
+		builder.setLength(builder.length() - delimiter.length());
+
+		return builder.toString();
+	}
+
 }
